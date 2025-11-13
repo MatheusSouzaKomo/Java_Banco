@@ -9,6 +9,16 @@ background-color: #004080;
 color: white;
 text-align: center;
 padding: 15px;
+position: relative;
+}
+
+.horario {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
 }
 main {
 max-width: 700px;
@@ -51,4 +61,17 @@ border: 1px solid #004080;
 padding: 10px;
 border-radius: 8px;
 margin-top: 15px;
+}
+
+.horario {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(250, 233, 3);
+}
+
+header {
+    position: relative;
 }

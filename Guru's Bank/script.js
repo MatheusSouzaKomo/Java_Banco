@@ -52,10 +52,6 @@ movimentacoes = []; // limpa movimentações anteriores
     document.getElementById("btnAbrir").disabled = true;
     habilitarOperacoes(true);
     };
-document.getElementById("resConta").innerHTML =
-`✅ Conta <strong>${tipo}</strong> criada com sucesso para
-<strong>${nome}</strong>.`;
-
 /* ------------------------------------------------------------
     Função que habilita ou desabilita os botões de operação
 ------------------------------------------------------------ */
@@ -208,3 +204,18 @@ function trocarConta() {
         if (!confirma) return;
     }
 }
+
+function mostrarHora() {
+    const agora = new Date(); // pega data e hora atuais
+    const horas = agora.getHours().toString().padStart(2, '0');
+    const minutos = agora.getMinutes().toString().padStart(2, '0');
+    const segundos = agora.getSeconds().toString().padStart(2, '0');
+
+    const horaFormatada = `${horas}:${minutos}:${segundos}`;
+
+    document.getElementById("hora").textContent = horaFormatada;
+  }
+
+  setInterval(mostrarHora, 1000);
+
+  mostrarHora();
