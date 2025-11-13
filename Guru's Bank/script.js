@@ -117,7 +117,7 @@ Função para listar todas as movimentações registradas
 function listarMovimentos() {
 if (!contaAtiva()) return;
 if (movimentacoes.length === 0) {
-document.getElementById("resOperacoes").innerHTML =
+document.getElementById("resOperacoes").innerHTML 
 "Nenhuma movimentação registrada.";
 return;
 }
