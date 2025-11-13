@@ -3,7 +3,6 @@ CÓDIGO JAVASCRIPT - SIMULADOR DE BANCO PRA GUARDAR DINHEIRO IMAGINÁRIO
 =================================================================== */
 
 // Variáveis principais que armazenam a conta e suas movimentações
-
 let conta = null;
 let movimentacoes = [];
 
@@ -51,10 +50,7 @@ movimentacoes = []; // limpa movimentações anteriores
     document.getElementById("tipoConta").disabled = true;
     document.getElementById("btnAbrir").disabled = true;
     habilitarOperacoes(true);
-    };
-document.getElementById("resConta").innerHTML =
-`✅ Conta <strong>${tipo}</strong> criada com sucesso para
-<strong>${nome}</strong>.`;
+    }
 
 /* ------------------------------------------------------------
     Função que habilita ou desabilita os botões de operação
@@ -85,7 +81,7 @@ return;
 
     movimentacoes.push(`${obterDataHoraAtual()} Depósito de R$ ${valor.toFixed(2)}`);
         document.getElementById("resOperacoes").innerHTML =
-    ` Depósito concluído, feito por ${conta.nomeCliente}, Saldo atual: <strong>R$
+    ` Depósito concluído, Saldo atual: <strong>R$
     ${conta.saldo.toFixed(2)}</strong>`;
     }
 
@@ -110,7 +106,7 @@ return;
 
     movimentacoes.push(`${obterDataHoraAtual()} Saque de R$ ${valor.toFixed(2)}`);
         document.getElementById("resOperacoes").innerHTML =
-        ` Saque realizado, por ${conta.nomeCliente},  Saldo atual: <strong>R$
+        ` Saque realizado, Saldo atual: <strong>R$
     ${conta.saldo.toFixed(2)}</strong>`;
     }
 
@@ -121,7 +117,7 @@ return;
     function verSaldo() {
         if (!contaAtiva()) return;
     document.getElementById("resOperacoes").innerHTML =
-        `Conta de ${conta.nomeCliente},  Saldo atual de: <strong>R$ ${conta.saldo.toFixed(2)}</strong>`;
+        ` Saldo atual: <strong>R$ ${conta.saldo.toFixed(2)}</strong>`;
     }
 
 /* ------------------------------------------------------------
@@ -134,15 +130,9 @@ return;
         "Nenhuma movimentação registrada no sistema.";
         return;
     }
-
-    const cabecalho = `
-    <strong> Cliente: </strong> ${conta.nomeCliente} |
-    <strong> Tipo de Conta: </strong> ${conta.tipoConta} 
-    <hr> `;
-
-        const lista = movimentacoes.join("<br>" );
+        const lista = movimentacoes.join("<br>");
     document.getElementById("resOperacoes").innerHTML =
-        `${cabecalho} <strong>📜 Movimentações:</strong><br> ${lista}`;
+        `<strong>📜 Movimentações:</strong><br>${lista}`;
     }
 
 /* ------------------------------------------------------------
@@ -173,7 +163,6 @@ return;
     document.getElementById("resConta").innerHTML = "";
     }
 }
-
 /* ------------------------------------------------------------
     Função auxiliar que verifica se há conta ativa
 ------------------------------------------------------------ */
