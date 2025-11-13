@@ -85,7 +85,7 @@ return;
 
     movimentacoes.push(`${obterDataHoraAtual()} Depósito de R$ ${valor.toFixed(2)}`);
         document.getElementById("resOperacoes").innerHTML =
-    ` Depósito concluído, Saldo atual: <strong>R$
+    ` Depósito concluído, feito por ${conta.nomeCliente}, Saldo atual: <strong>R$
     ${conta.saldo.toFixed(2)}</strong>`;
     }
 
@@ -110,7 +110,7 @@ return;
 
     movimentacoes.push(`${obterDataHoraAtual()} Saque de R$ ${valor.toFixed(2)}`);
         document.getElementById("resOperacoes").innerHTML =
-        ` Saque realizado, Saldo atual: <strong>R$
+        ` Saque realizado, por ${conta.nomeCliente},  Saldo atual: <strong>R$
     ${conta.saldo.toFixed(2)}</strong>`;
     }
 
@@ -121,7 +121,7 @@ return;
     function verSaldo() {
         if (!contaAtiva()) return;
     document.getElementById("resOperacoes").innerHTML =
-        ` Saldo atual: <strong>R$ ${conta.saldo.toFixed(2)}</strong>`;
+        `Conta de ${conta.nomeCliente},  Saldo atual de: <strong>R$ ${conta.saldo.toFixed(2)}</strong>`;
     }
 
 /* ------------------------------------------------------------
@@ -134,9 +134,15 @@ return;
         "Nenhuma movimentação registrada no sistema.";
         return;
     }
-        const lista = movimentacoes.join("<br>");
+
+    const cabecalho = `
+    <strong> Cliente: </strong> ${conta.nomeCliente} |
+    <strong> Tipo de Conta: </strong> ${conta.tipoConta} 
+    <hr> `;
+
+        const lista = movimentacoes.join("<br>" );
     document.getElementById("resOperacoes").innerHTML =
-        `<strong>📜 Movimentações:</strong><br>${lista}`;
+        `${cabecalho} <strong>📜 Movimentações:</strong><br> ${lista}`;
     }
 
 /* ------------------------------------------------------------
