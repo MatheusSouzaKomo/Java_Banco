@@ -25,8 +25,8 @@ return `[${data} ${hora}]`;
 function abrirConta() {
     const nome = document.getElementById("nome").value.trim();
     const tipo = document.getElementById("tipoConta").value;
-if (nome === " ") {
-    alert("Obrigatório informar o nome");
+if (nome === "") {
+    alert("Obrigatório informar o nome, meu chapinha!");
 return;
 }
 
@@ -66,6 +66,7 @@ function habilitarOperacoes(estado) {
     document.getElementById("btnSaldo").disabled = !estado;
     document.getElementById("btnMov").disabled = !estado;
     document.getElementById("btnEncerrar").disabled = !estado;
+    document.getElementById("btnTrocar").disabled = !estado;
 }
 
 /* ------------------------------------------------------------
@@ -184,4 +185,26 @@ return;
         return false;
     }
         return true;
+}
+
+/* ------------------------------------------------------------
+    Função que troca de conta.
+------------------------------------------------------------ */
+
+function trocarConta() {
+    if (conta && conta.ativa) {
+    const confirma = confirm("Você tem uma conta ativa. Deseja trocar de conta?");
+
+// Reseta campos e interface
+    document.getElementById("nome").value = "";
+    document.getElementById("tipoConta").value = "corrente";
+    document.getElementById("nome").disabled = false;
+    document.getElementById("tipoConta").disabled = false;
+    document.getElementById("btnAbrir").disabled = false;
+
+    habilitarOperacoes(false);
+
+
+        if (!confirma) return;
+    }
 }
