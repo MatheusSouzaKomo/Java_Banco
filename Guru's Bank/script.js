@@ -25,8 +25,8 @@ return `[${data} ${hora}]`;
 function abrirConta() {
     const nome = document.getElementById("nome").value.trim();
     const tipo = document.getElementById("tipoConta").value;
-if (nome === " ") {
-    alert("Obrigatório informar o nome");
+if (nome === "") {
+    alert("Obrigatório informar o nome, meu chapinha!");
 return;
 }
 
@@ -52,10 +52,6 @@ movimentacoes = []; // limpa movimentações anteriores
     document.getElementById("btnAbrir").disabled = true;
     habilitarOperacoes(true);
     };
-document.getElementById("resConta").innerHTML =
-`✅ Conta <strong>${tipo}</strong> criada com sucesso para
-<strong>${nome}</strong>.`;
-
 /* ------------------------------------------------------------
     Função que habilita ou desabilita os botões de operação
 ------------------------------------------------------------ */
@@ -66,6 +62,7 @@ function habilitarOperacoes(estado) {
     document.getElementById("btnSaldo").disabled = !estado;
     document.getElementById("btnMov").disabled = !estado;
     document.getElementById("btnEncerrar").disabled = !estado;
+    document.getElementById("btnTrocar").disabled = !estado;
 }
 
 /* ------------------------------------------------------------
@@ -185,3 +182,40 @@ return;
     }
         return true;
 }
+
+/* ------------------------------------------------------------
+    Função que troca de conta.
+------------------------------------------------------------ */
+
+function trocarConta() {
+    if (conta && conta.ativa) {
+    const confirma = confirm("Você tem uma conta ativa. Deseja trocar de conta?");
+
+// Reseta campos e interface
+    document.getElementById("nome").value = "";
+    document.getElementById("tipoConta").value = "corrente";
+    document.getElementById("nome").disabled = false;
+    document.getElementById("tipoConta").disabled = false;
+    document.getElementById("btnAbrir").disabled = false;
+
+    habilitarOperacoes(false);
+
+
+        if (!confirma) return;
+    }
+}
+
+function mostrarHora() {
+    const agora = new Date(); // pega data e hora atuais
+    const horas = agora.getHours().toString().padStart(2, '0');
+    const minutos = agora.getMinutes().toString().padStart(2, '0');
+    const segundos = agora.getSeconds().toString().padStart(2, '0');
+
+    const horaFormatada = `${horas}:${minutos}:${segundos}`;
+
+    document.getElementById("hora").textContent = horaFormatada;
+  }
+
+  setInterval(mostrarHora, 1000);
+
+  mostrarHora();
